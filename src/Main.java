@@ -4,17 +4,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		BankAccount account = new BankAccount();
-		account.setAccountNumber(123);
-		account.setBalance(4000);
-		account.setCustomerName("Austin");
+		BankAccount austinAccount = new BankAccount(123, 5000.37, "Austin", "austin@gmail.com","1111111");
+		account.deposit(200.12);
+		account.withDrawal(24.42);
 		
-		account.deposit(120);
-		
-		account.withDrawal(20);
-		
-		System.out.println(account.getBalance());
-		System.out.println(account.withDrawal(100));
-		System.out.println(account.getCustomerName());
+		System.out.println(austinAccount.getBalance());
 		
 	}
 

@@ -1,16 +1,29 @@
 
 public class BankAccount {
 	private int accountNumber;
-	private int balance;
+	private double balance;
 	private String customerName;
 	private String customerEmail;
 	private String customerPhoneNumber;
+	
+	public BankAccount() {
+		this(123, 0.00, "Jane Doe", "janedoe@email.com", "(999) 999-9999");
+		System.out.println("Empty Constructor");
+	}
+	
+	public BankAccount(int accountNum, double balance, String customerName, String customerEmail, String customerPhoneNumber) {
+		this.accountNumber = accountNum;
+		this.balance = balance;
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.customerPhoneNumber = customerPhoneNumber;
+	}
 	
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 	
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	
@@ -30,7 +43,7 @@ public class BankAccount {
 		return this.accountNumber;
 	}
 	
-	public int getBalance() {
+	public double getBalance() {
 		return this.balance;
 	}
 	
@@ -46,19 +59,20 @@ public class BankAccount {
 		return this.customerPhoneNumber;
 	}
 
-	public void deposit(int funds) {
-		int balance = getBalance();
-		setBalance(balance + funds);	
+	public String deposit(double funds) {
+		this.balance += funds;	
+		return "Success your balance is now: " + this.balance;
 	}
 	
-	public String withDrawal(int amount) {
-		int balance = getBalance();
-		if(balance < amount) {
-			return "innsufficent Funds";
+	public void withDrawal(double amount) {
+	System.out.println(this.balance);
+		if(0 > this.balance - amount) {
+			System.out.println("innsufficent Funds");
+		} else {
+			this.balance -= amount;
+			System.out.println(this.balance);
+			System.out.println("Success your balance is: " + this.balance);
 		}
-		setBalance(balance - amount);
-		
-		return "Success your balance is: " + getBalance();
 	}
 
 	
